@@ -9,6 +9,31 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        //Mètode amb un mateix trail
+        var dummy = new Dummy();
+        dummy.doImportantStuff1();
+        dummy.doImportantStuff2();
+        dummy.doImportantStuff3();
+        System.out.println("The end.");
+
+        //Mètode amb varis trails
+        var importantStuff1=new ImportantStuff1();
+        var importantStuff2=new ImportantStuff2();
+        var importantStuff3=new ImportantStuff3();
+
+        importantStuff1.start();
+        importantStuff2.start();
+        importantStuff3.start();
+
+        /**Mètode que impedeix que el mètode main() no procedeixi fins
+         * que no s'acabi una operacio (en aquest cas importantStuff1)
+         */
+        try {
+            importantStuff1.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }
